@@ -24,7 +24,7 @@ public class OptionalTest {
         arrayList.add(2);
         arrayList.add(1);
         String join = Joiner.on(",").join(arrayList);
-        log.info("你好{}\t{}",123,222);
+
     }
 
 }
