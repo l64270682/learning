@@ -1,6 +1,6 @@
 package com.liyu.test;
 
-import com.liyu.model.UserDTO;
+import com.liyu.model.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,8 +22,8 @@ public class Controller {
     @GetMapping("/v1/task/test")
     @ResponseBody
     public ResponseEntity<?> taskStatus() {
-        UserDTO userDTO = springChace.saveUserDTO();
-        return ResponseEntity.ok().body(userDTO);
+        Book book = springChace.saveBook();
+        return ResponseEntity.ok(book);
     }
 
 }

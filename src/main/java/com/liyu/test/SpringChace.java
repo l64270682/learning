@@ -1,32 +1,33 @@
 package com.liyu.test;
 
-import com.alicp.jetcache.Cache;
-import com.alicp.jetcache.anno.Cached;
-import com.alicp.jetcache.anno.CreateCache;
-import com.liyu.model.UserDTO;
+import com.liyu.model.Book;
+import com.liyu.model.BookRepository;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * @author liyu
  * @date:2018/8/19
  * @describe:
  */
-@Component
 @Slf4j
+@Service
 public class SpringChace {
 
-    @CreateCache
-    Cache<String, UserDTO> userCache;
+    @Autowired
+    BookRepository bookRepository;
 
-    @Cached(name = "saveUserDTO",expire = 100)
-    public UserDTO saveUserDTO() {
-        UserDTO userDTO=new UserDTO();
-        userDTO.setUserName("wwj");
-        userCache.put("123",userDTO);
-        return userCache.get("123");
+    public Book saveBook() {
+        Book book = new Book();
+        book.setId(1L);
+        book.setAccountName("红楼梦");
+        book.setNickName("红楼梦第一回");
+        bookRepository.save(book);
+        Book bookOptional = bookRepository.findById(1L).get();
+        return bookOptional;
+
     }
-
 
 
 }
