@@ -2,6 +2,18 @@ spring:
   profiles:
     active: test
 
+  rabbitmq:
+    host: 192.168.5.27
+    port: 5672
+    username: guest
+    password: guest
+    listener:
+      simple:
+        retry:
+          max-attempts: 5
+          initial-interval: 5000ms
+          enabled: true
+
 server:
   port: 8989
 

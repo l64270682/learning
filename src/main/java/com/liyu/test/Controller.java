@@ -4,6 +4,7 @@ import com.liyu.model.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,11 +20,18 @@ public class Controller {
     @Autowired
     SpringChace springChace;
 
-    @GetMapping("/v1/task/test")
+    @PostMapping("/v1/task/test")
     @ResponseBody
     public ResponseEntity<?> taskStatus() {
         Book book = springChace.saveBook();
         return ResponseEntity.ok(book);
+    }
+
+    @GetMapping("/v1/send")
+    @ResponseBody
+    public ResponseEntity<?> sendBook() {
+        springChace.sendMq();
+        return ResponseEntity.ok().build();
     }
 
 }
