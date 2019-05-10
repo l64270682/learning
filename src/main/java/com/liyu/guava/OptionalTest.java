@@ -22,9 +22,9 @@ public class OptionalTest {
         arrayList.add(1);
         arrayList.add(10);
         arrayList.add(2);
+        System.out.println("ss");
         arrayList.add(1);
         String join = Joiner.on(",").join(arrayList);
-        log.info("你好{}\t{}",123,222);
     }
 
 }
